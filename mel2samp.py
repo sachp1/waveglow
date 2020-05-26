@@ -31,7 +31,7 @@ import json
 import torch
 import torch.utils.data
 import sys
-from scipy.io.wavfile import read
+from soundfile import read
 
 # We're using the audio processing from TacoTron2 to make sure it matches
 sys.path.insert(0, 'tacotron2')
@@ -53,7 +53,7 @@ def load_wav_to_torch(full_path):
     """
     Loads wavdata into torch array
     """
-    sampling_rate, data = read(full_path)
+    data, sampling_rate= read(full_path)
     return torch.from_numpy(data).float(), sampling_rate
 
 
