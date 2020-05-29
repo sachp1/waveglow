@@ -54,7 +54,7 @@ def load_wav_to_torch(full_path):
     Loads wavdata into torch array
     """
     data, sampling_rate= read(full_path)
-    return torch.from_numpy(data).float(), sampling_rate
+    return torch.from_numpy((data*(12/0.0036621)).astype(np.int16).float()), sampling_rate
 
 
 class Mel2Samp(torch.utils.data.Dataset):
